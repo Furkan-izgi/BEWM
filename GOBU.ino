@@ -241,27 +241,6 @@ void loop() {
     } 
         
 }
-
-//  Serial.print("sagel =");
-//  Serial.println(sagelcm);
-//
-//  Serial.print("solel =");
-//  Serial.println(solelcm);
-//  
-//  Serial.print("solüst =");
-//  Serial.println(solustcm);
-// 
-//  Serial.print("sağüst =");
-//  Serial.println(sagustcm);
-  
-//  Serial.print("önüst =");
-//  Serial.println(onustcm);
-
-//  Serial.print("solalt =");
-//  Serial.println(solaltcm);
-//  
-//  Serial.print("sağalt =");
-//  Serial.println(sagaltcm);
 }
 
 
