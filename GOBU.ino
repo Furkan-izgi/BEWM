@@ -1,4 +1,5 @@
-#define trigsagel 23
+// These numbers are port numbers in Arduino Mega.
+#define rightHandTrig 23 
 #define echosagel 22
 
 #define trigsolel 25
@@ -19,6 +20,7 @@
 #define trigsolalt 37
 #define echosolalt 36
 
+//These numbers are analog-port numbers in Arduino Mega.
 int sagelm = 3;
 int solelm = 4;
 int onustm = 5;
@@ -33,8 +35,9 @@ int i,k;
 
 void setup() {
     
-Serial.begin(9600);
-    
+Serial.begin(9600);// We started the monitor in Arduino IDE
+
+// In the below codes are decide which ones are output or input pin
 pinMode(trigsagel,OUTPUT);
 pinMode(echosagel,INPUT);
     
