@@ -21,17 +21,17 @@
 #define echoBottomLeft 36
 
 //These numbers are analog-port numbers in Arduino Mega.
-int sagelm = 3;
-int solelm = 4;
-int onustm = 5;
-int solustm = 6;
-int sagustm = 7;    
-int sagaltm = 8;
-int solaltm = 9;
+int mRight = 3;
+int mLeft = 4;
+int mTopFront = 5;
+int mTopLeft = 6;
+int mTopRight = 7;    
+int mBottomRight = 8;
+int mBottomLeft = 9;
 
-unsigned int sagelcm,solelcm,onustcm,solustcm,sagustcm,sagaltcm,solaltcm;
+unsigned int cmRight,cmLeft,cmTopFront,cmTopLeft,cmTopRight,cmBottomRight,cmBottomLeft;
 
-int i,k;
+int i;
 
 void setup() {
     
@@ -87,16 +87,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigRight,LOW);
           long value;
           value = pulseIn(echoRight,HIGH);                      
-          sagelcm = value / 58.2;
+          cmRight = value / 58.2;
           
-          if(sagelcm > 9 && sagelcm < 41){ //sağelcm 10 ile 40 arasında ise 170 voltaj ver 
+          if(cmRight > 9 && cmRight < 41){ //If cmRight is between 10 and 40 cm, give 1,5V 
                     analogWrite(3,170);
                }  
-          if(sagelcm >=0  && sagelcm < 11){ //sağelcm 0 ile 10 arasında  ise 225 voltaj ver 
+          if(cmRight >=0  && cmRight < 11){ //If cmRight is between 10 and 40 cm, give 1,5V 
                     analogWrite(3,225);
                }
           else{
-               analogWrite(3,0);                         
+               analogWrite(3,0); //Else, give 0V                         
                }
      }
           
@@ -109,16 +109,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigLeft,LOW);
           long value;
           value = pulseIn(echoLeft,HIGH);                      
-          solelcm = value / 58.2;
+          cmLeft = value / 58.2;
           
-          if(solelcm > 9 && solelcm < 41){ //solelcm 10 ile 40 arasında  ise 170 voltaj ver
+          if(cmLeft > 9 && cmLeft < 41){ //If cmLeft is between 10 and 40 cm, give 1,5V
                     analogWrite(4,170);
                }  
-          if(solelcm >=0  && solelcm < 11){ //solelcm 0 ile 10 arasında  ise 230 voltaj ver
+          if(cmLeft >=0  && cmLeft < 11){ //If cmLeft is between 10 and 40 cm, give 3V
                     analogWrite(3,230);
                }
           else{
-               analogWrite(4,0);                         
+               analogWrite(4,0); //Else, give 0V                         
                }                  
      }
           
@@ -131,16 +131,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigTopFront,LOW);
           long value;
           value = pulseIn(echoTopFront,HIGH);                      
-          onustcm = value / 58.2;
+          cmTopFront = value / 58.2;
           
-          if(onustcm > 9 && onustcm < 41){ //onustcm 10 ile 40 arasında  ise 170 voltaj ver
+          if(cmTopFront > 9 && cmTopFront < 41){ //If cmTopFront is between 10 and 40 cm, give 1,5V
                     analogWrite(5,170);
                }
-          if(onustcm >=0  && onustcm < 11){ //onustcm 0 ile 10 arasında  ise 230 voltaj ver 
+          if(cmTopFront >=0  && cmTopFront < 11){ //If cmTopFront is between 10 and 40 cm, give 3V 
                     analogWrite(3,230);
                } 
           else{
-               analogWrite(5,0); 
+               analogWrite(5,0); //Else, give 0V
                }
      }
     
@@ -153,16 +153,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigTopLeft,LOW);
           long value;
           value = pulseIn(echoTopLeft,HIGH);                      
-          solustcm = value / 58.2;
+          cmTopLeft = value / 58.2;
 
-          if(solustcm > 9 && solustcm < 41){ //solustcm 10 ile 40 arasında  ise 170 voltaj ver
+          if(cmTopLeft > 9 && cmTopLeft < 41){ //If cmTopLeft is between 10 and 40 cm, give 1,5V
                     analogWrite(6,170);
                } 
-          if(solustcm >=0  && solustcm < 11){ //solustcm 0 ile 10 arasında  ise 230 voltaj ver
+          if(cmTopLeft >=0  && cmTopLeft < 11){ //If cmTopLeft is between 10 and 40 cm, give 3V
                     analogWrite(3,230);
                }    
           else{
-               analogWrite(6,0);                         
+               analogWrite(6,0); //Else, give 0V                         
                }              
      } 
           
@@ -175,16 +175,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigTopRight,LOW);
           long value;
           value = pulseIn(echoTopRight,HIGH);                      
-          sagustcm = value / 58.2;
+          cmTopRight = value / 58.2;
 
-          if(sagustcm > 9 && sagustcm < 41){ //solelcm 10 ile 40 arasında  ise 170 voltaj ver
+          if(cmTopRight > 9 && cmTopRight < 41){ //If cmTopRight is between 10 and 40 cm, give 1,5V
                     analogWrite(7,170);
                }
-          if(sagustcm >=0  && sagustcm < 11){ //solelcm 0 ile 10 arasında  ise 230 voltaj ver
+          if(cmTopRight >=0  && cmTopRight < 11){ //If cmTopRight is between 10 and 40 cm, give 3V
                     analogWrite(3,230);
                }
           else{
-               analogWrite(7,0);                         
+               analogWrite(7,0); //Else, give 0V                         
                }                        
      } 
 
@@ -197,16 +197,15 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigBottomRight,LOW);
           long value;
           value = pulseIn(echoBottomRight,HIGH);                      
-          sagaltcm = value / 58.2;
+          cmBottomRight = value / 58.2;
 
-          if(sagaltcm > 9 && sagaltcm < 41){ //sagaltcm 10 ile 40 arasında  ise 170 voltaj ver
-                    analogWrite(8,170);
+          if(cmBottomRight > 9 && cmBottomRight < 41){ //If cmBottomRight is between 10 and 40 cm, give 1,5V
                }
-          if(sagaltcm >=0  && sagaltcm < 11){ //sagaltcm 0 ile 10 arasında  ise 230 voltaj ver
+          if(cmBottomRight >=0  && cmBottomRight < 11){ //If cmBottomRight is between 10 and 40 cm, give 3V
                     analogWrite(3,230);
                }         
           else{
-               analogWrite(8,0);                         
+               analogWrite(8,0); //Else, give 0V                         
                }   
      }    
 
@@ -219,16 +218,16 @@ for(i = 1;i <= 7;i++){
           digitalWrite(trigBottomLeft,LOW);
           long value;
           value = pulseIn(echoBottomLeft,HIGH);                      
-          solaltcm = value / 58.2;
+          cmBottomLeft = value / 58.2;
 
-          if(solaltcm > 9 && solaltcm < 41){ //solaltcm 10 ile 40 arasında  ise 170 voltaj ver
+          if(cmBottomLeft > 9 && cmBottomLeft < 41){ //If cmBottomLeft is between 10 and 40 cm, give 1,5V
                     analogWrite(9,170);
                } 
-          if(solaltcm >=0  && solaltcm < 11){ //solaltcm 0 ile 10 arasında  ise 230 voltaj ver
+          if(cmBottomLeft >=0  && cmBottomLeft < 11){ //If cmBottomLeft is between 0 and 10 cm, give 3V
                     analogWrite(3,230);
                }     
           else{
-               analogWrite(9,0);                         
+               analogWrite(9,0); //Else, give 0V                      
                }                 
      } 
 }
