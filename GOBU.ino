@@ -1,4 +1,4 @@
-// These numbers are port numbers in Arduino Mega.
+// These numbers are input and output port numbers of distance sensor's in Arduino Mega.
 #define trigRight 23 
 #define echoRight 22
 
@@ -20,7 +20,7 @@
 #define trigBottomLeft 37
 #define echoBottomLeft 36
 
-//These numbers are analog-port numbers in Arduino Mega.
+//These digits are analog-port numbers of vibration motors in Arduino Mega.
 int mRight = 3;
 int mLeft = 4;
 int mTopFront = 5;
@@ -29,15 +29,15 @@ int mTopRight = 7;
 int mBottomRight = 8;
 int mBottomLeft = 9;
 
-unsigned int cmRight,cmLeft,cmTopFront,cmTopLeft,cmTopRight,cmBottomRight,cmBottomLeft;
+unsigned int cmRight,cmLeft,cmTopFront,cmTopLeft,cmTopRight,cmBottomRight,cmBottomLeft; //These are testing and decision variables for distance sensors.
 
-int i;
+int i; //Loop controller
 
 void setup() {
     
-Serial.begin(9600);// We started the monitor in Arduino IDE
+Serial.begin(9600);// We started a communication with Arduino IDE.
 
-// In the below codes are decide which ones are output or input pin
+// In the below codes are decide which ones are output or input pins of distance sensors.
 pinMode(trigRight,OUTPUT);
 pinMode(echoRight,INPUT);
     
@@ -89,14 +89,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoRight,HIGH);                      
           cmRight = value / 58.2;
           
-          if(cmRight > 9 && cmRight < 41){ //If cmRight is between 10 and 40 cm, give 1,5V 
+          if(cmRight > 9 && cmRight < 41){ //If cmRight is between 10 and 40 cm, give 1.5V .
                     analogWrite(3,170);
                }  
-          if(cmRight >=0  && cmRight < 11){ //If cmRight is between 10 and 40 cm, give 1,5V 
+          if(cmRight >=0  && cmRight < 11){ //If cmRight is between 0 and 10 cm, give 2.5V .
                     analogWrite(3,225);
                }
           else{
-               analogWrite(3,0); //Else, give 0V                         
+               analogWrite(3,0); //Else, give 0V .                        
                }
      }
           
@@ -111,14 +111,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoLeft,HIGH);                      
           cmLeft = value / 58.2;
           
-          if(cmLeft > 9 && cmLeft < 41){ //If cmLeft is between 10 and 40 cm, give 1,5V
+          if(cmLeft > 9 && cmLeft < 41){ //If cmLeft is between 10 and 40 cm, give 1.5V .
                     analogWrite(4,170);
                }  
-          if(cmLeft >=0  && cmLeft < 11){ //If cmLeft is between 10 and 40 cm, give 3V
-                    analogWrite(3,230);
+          if(cmLeft >=0  && cmLeft < 11){ //If cmLeft is between 0 and 10 cm, give 2.5V .
+                    analogWrite(3,225);
                }
           else{
-               analogWrite(4,0); //Else, give 0V                         
+               analogWrite(4,0); //Else, give 0V .                       
                }                  
      }
           
@@ -133,14 +133,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoTopFront,HIGH);                      
           cmTopFront = value / 58.2;
           
-          if(cmTopFront > 9 && cmTopFront < 41){ //If cmTopFront is between 10 and 40 cm, give 1,5V
+          if(cmTopFront > 9 && cmTopFront < 41){ //If cmTopFront is between 10 and 40 cm, give 1.5V .
                     analogWrite(5,170);
                }
-          if(cmTopFront >=0  && cmTopFront < 11){ //If cmTopFront is between 10 and 40 cm, give 3V 
+          if(cmTopFront >=0  && cmTopFront < 11){ //If cmTopFront is between 0 and 10 cm, give 2.5V .
                     analogWrite(3,230);
                } 
           else{
-               analogWrite(5,0); //Else, give 0V
+               analogWrite(5,0); //Else, give 0V .
                }
      }
     
@@ -155,14 +155,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoTopLeft,HIGH);                      
           cmTopLeft = value / 58.2;
 
-          if(cmTopLeft > 9 && cmTopLeft < 41){ //If cmTopLeft is between 10 and 40 cm, give 1,5V
+          if(cmTopLeft > 9 && cmTopLeft < 41){ //If cmTopLeft is between 10 and 40 cm, give 1.5V .
                     analogWrite(6,170);
                } 
-          if(cmTopLeft >=0  && cmTopLeft < 11){ //If cmTopLeft is between 10 and 40 cm, give 3V
+          if(cmTopLeft >=0  && cmTopLeft < 11){ //If cmTopLeft is between 0 and 10 cm, give 2.5V .
                     analogWrite(3,230);
                }    
           else{
-               analogWrite(6,0); //Else, give 0V                         
+               analogWrite(6,0); //Else, give 0V .                        
                }              
      } 
           
@@ -177,14 +177,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoTopRight,HIGH);                      
           cmTopRight = value / 58.2;
 
-          if(cmTopRight > 9 && cmTopRight < 41){ //If cmTopRight is between 10 and 40 cm, give 1,5V
+          if(cmTopRight > 9 && cmTopRight < 41){ //If cmTopRight is between 10 and 40 cm, give 1.5V .
                     analogWrite(7,170);
                }
-          if(cmTopRight >=0  && cmTopRight < 11){ //If cmTopRight is between 10 and 40 cm, give 3V
+          if(cmTopRight >=0  && cmTopRight < 11){ //If cmTopRight is between 0 and 10 cm, give 2.5V .
                     analogWrite(3,230);
                }
           else{
-               analogWrite(7,0); //Else, give 0V                         
+               analogWrite(7,0); //Else, give 0V .                         
                }                        
      } 
 
@@ -199,13 +199,13 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoBottomRight,HIGH);                      
           cmBottomRight = value / 58.2;
 
-          if(cmBottomRight > 9 && cmBottomRight < 41){ //If cmBottomRight is between 10 and 40 cm, give 1,5V
+          if(cmBottomRight > 9 && cmBottomRight < 41){ //If cmBottomRight is between 10 and 40 cm, give 1.5V .
                }
-          if(cmBottomRight >=0  && cmBottomRight < 11){ //If cmBottomRight is between 10 and 40 cm, give 3V
+          if(cmBottomRight >=0  && cmBottomRight < 11){ //If cmBottomRight is between 10 and 0 cm, give 2.5V .
                     analogWrite(3,230);
                }         
           else{
-               analogWrite(8,0); //Else, give 0V                         
+               analogWrite(8,0); //Else, give 0V .                         
                }   
      }    
 
@@ -220,14 +220,14 @@ for(i = 1;i <= 7;i++){
           value = pulseIn(echoBottomLeft,HIGH);                      
           cmBottomLeft = value / 58.2;
 
-          if(cmBottomLeft > 9 && cmBottomLeft < 41){ //If cmBottomLeft is between 10 and 40 cm, give 1,5V
+          if(cmBottomLeft > 9 && cmBottomLeft < 41){ //If cmBottomLeft is between 10 and 40 cm, give 1.5V .
                     analogWrite(9,170);
                } 
-          if(cmBottomLeft >=0  && cmBottomLeft < 11){ //If cmBottomLeft is between 0 and 10 cm, give 3V
+          if(cmBottomLeft >=0  && cmBottomLeft < 11){ //If cmBottomLeft is between 10 and 0 cm, give 2.5V .
                     analogWrite(3,230);
                }     
           else{
-               analogWrite(9,0); //Else, give 0V                      
+               analogWrite(9,0); //Else, give 0V .                      
                }                 
      } 
 }
